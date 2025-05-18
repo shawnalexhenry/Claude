@@ -1,0 +1,404 @@
+# Additional Geological and Geophysical Laws for Comprehensive Terrain Simulation
+
+## 1. Impact Processes (Asteroid/Comet/Meteorite)
+
+### 1.1 Impact Mechanics
+- **Kinetic Energy Transfer**: E = 0.5mv² [J] where m is impactor mass [kg], v is impact velocity [m/s]
+- **Cratering Efficiency**: V = K(ρ_i/ρ_t)^α E/g [m³] 
+  - V is crater volume, K is material constant, ρ_i/ρ_t is impactor/target density ratio
+  - α ≈ 0.22, E is kinetic energy, g is gravity
+- **Crater Scaling Laws**:
+  - Transient crater diameter: D_tc ≈ 1.16(E/g)^(1/4) [m] for simple craters
+  - Final crater diameter: D ≈ 1.25D_tc [m] for simple craters
+  - Complex crater diameter: D ≈ 1.17(E/g)^(1/3.4) [m] when D > transition diameter
+- **Peak Pressure**: P_peak ≈ ρ_t·v_i·v_s [Pa]
+  - Where v_i is impact velocity [m/s], v_s is shock velocity [m/s]
+- **Shock Wave Attenuation**: P(r) = P_0(r_0/r)^n [Pa]
+  - Where n ≈ 2-3, r is distance from impact [m]
+
+### 1.2 Ejecta Distribution
+- **Ballistic Ejecta Range**: R = v²sin(2θ)/g [m]
+  - Where v is ejection velocity [m/s], θ is ejection angle [rad]
+- **Ejecta Thickness**: t(r) = t_0(r_0/r)^n [m]
+  - Where t_0 is thickness at reference distance r_0 [m], n ≈ 3
+- **Secondary Cratering**: Begins at approximately 2-3 crater radii from primary impact
+- **Melt Production**: V_melt ≈ 0.1·E·f_m/ρ·H_m [m³]
+  - Where E is impact energy [J], f_m is melting efficiency [~0.3-0.5], 
+  - H_m is heat of melting [J/kg], ρ is target density [kg/m³]
+
+### 1.3 Post-Impact Modification
+- **Crater Collapse Rate**: For complex craters, central uplift forms within minutes to hours
+- **Hydrothermal System Evolution**: Duration scales with crater size
+  - t_hydro ≈ 10³·D² [years] where D is crater diameter [km]
+- **Fracture Patterns**: Concentric and radial fractures extend up to 4 crater radii
+- **Impact-Induced Seismicity**: Equivalent magnitude M ≈ 0.67log₁₀(E) - 5.87
+  - Where E is impact energy [J]
+
+## 2. Volcanic Processes
+
+### 2.1 Magma Chamber Dynamics
+- **Overpressure for Eruption**: ΔP > τ + ρgh [Pa]
+  - Where τ is tensile strength of rock [typically 1-10 MPa]
+  - h is chamber depth [m], ρ is overburden density [kg/m³]
+- **Magma Ascent Rate**: u ≈ ΔPr²/(8ηL) [m/s] for laminar pipe flow
+  - Where ΔP is pressure difference [Pa], r is conduit radius [m]
+  - η is magma viscosity [10²-10¹² Pa·s], L is conduit length [m]
+- **Bubble Growth Rate**: dr/dt = (P_b - P_l - 2σ/r)/(4η) [m/s]
+  - Where P_b is bubble pressure, P_l is liquid pressure [Pa]
+  - σ is surface tension [N/m], r is bubble radius [m]
+
+### 2.2 Eruption Dynamics
+- **Volatile Exsolution**: Henry's Law: c = kP^n 
+  - Where c is dissolved gas concentration, k is solubility constant
+  - n ≈ 0.5 for H₂O in silicate melts
+- **Fragmentation Criterion**: Occurs when gas volume fraction φ exceeds 0.7-0.8
+  - Or when strain rate exceeds magma relaxation rate: έ > G/η
+  - Where G is shear modulus [~10¹⁰ Pa], η is viscosity [Pa·s]
+- **Eruption Column Height**: H = 0.236·(Mdot)^(0.25) [km]
+  - Where Mdot is mass eruption rate [kg/s]
+- **Pyroclastic Flow Runout**: L ≈ H·(ρ_m - ρ_a)/ρ_a [m]
+  - Where H is column collapse height [m]
+  - ρ_m is mixture density, ρ_a is air density [kg/m³]
+
+### 2.3 Lava Flow Dynamics
+- **Flow Velocity (Newtonian)**: v = ρgh²sinθ/(3η) [m/s] for laminar sheet flow
+  - Where h is flow thickness [m], θ is slope angle [rad], η is viscosity [Pa·s]
+- **Flow Velocity (Bingham)**: v = ρgh²sinθ/(3η)(1-(3τ_y/ρghsinθ)+(τ_y/ρghsinθ)³) [m/s]
+  - Where τ_y is yield strength [Pa]
+- **Cooling-Limited Flow Length**: L = (q·ρ·h)/(2·k·ΔT) [m]
+  - Where q is effusion rate [m³/s], k is thermal conductivity [W/m/K]
+  - ΔT is temperature drop to halt flow [K]
+- **Lava Flow Width**: w = (q·η/(ρ·g·h³·sinθ))^(1/4) [m]
+  - For Bingham flows on slopes
+
+### 2.4 Volcano Morphology
+- **Shield Volcano Slopes**: Typically 2-10°, inversely related to effusion rate
+- **Stratovolcano Slopes**: Typically 25-35°, function of pyroclast size and fall vs. flow deposits
+- **Cone Volume Growth**: V = kt^n [m³]
+  - Where k is constant related to eruption rate, n ≈ 1 for steady eruption
+- **Calderas**: Form when chamber evacuation > 10-25% of chamber volume
+  - Diameter ≈ 2√(V_chamber/π·h) [m] where h is chamber depth [m]
+
+## 3. Glacial Processes
+
+### 3.1 Glacier Dynamics
+- **Driving Stress**: τ_d = ρgh·sinα [Pa]
+  - Where ρ is ice density [917 kg/m³], h is ice thickness [m], α is surface slope [rad]
+- **Ice Velocity (Deformation)**: v_def = 2A·(τ_d)^n·h/(n+1) [m/s]
+  - Where A is flow parameter [dependent on temperature, ~10⁻²⁴ Pa⁻³s⁻¹]
+  - n is Glen's flow law exponent, typically n = 3
+- **Ice Velocity (Sliding)**: v_slide = C·τ_d^p·P_e^q [m/s]
+  - Where C is sliding parameter, P_e is effective pressure [Pa]
+  - p ≈ 2-3, q ≈ 1
+- **Mass Balance**: dh/dt = a - ∇·(uh) [m/s]
+  - Where a is accumulation/ablation rate [m/s], u is depth-averaged velocity [m/s]
+
+### 3.2 Glacial Erosion
+- **Abrasion Rate**: E_a = f_a·N·v_s [m/s]
+  - Where f_a is abrasion coefficient, N is effective normal pressure [Pa]
+  - v_s is sliding velocity [m/s]
+- **Quarrying Rate**: E_q = f_q·v_s·exp(c·(τ-τ_c)) [m/s]
+  - Where f_q is quarrying coefficient, c is constant
+  - τ is basal shear stress, τ_c is critical stress [Pa]
+- **Total Erosion Rate**: E = K·v_s^a·P_e^b·L^c [m/s]
+  - Where L is tool concentration [dimensionless]
+  - a ≈ 1-2, b ≈ 0-1, c ≈ 1
+- **Hanging Valley Elevation Difference**: Δh ∝ (Q_tributary/Q_main)^n
+  - Where Q is ice discharge [m³/s], n ≈ 0.3-0.6
+
+### 3.3 Glacial Landforms
+- **U-Shaped Valley Width**: w = K·Q^a [m]
+  - Where Q is ice discharge [m³/s], a ≈ 0.3-0.5
+- **Cirque Geometry**: Depth/width ratio typically 0.5-0.6
+- **Glacial Trough Longitudinal Profile**: Characterized by overdeepening
+  - Depth of overdeepening h ∝ w^m where m ≈ 0.5-1
+- **Drumlin Formation**: Height/length ratio typically 0.1-0.5
+- **Fjord Dimensions**: Depth ∝ Width^0.4, typically width/depth ratio of 10-15
+
+## 4. Coastal Processes and Landforms
+
+### 4.1 Wave Dynamics
+- **Wave Base Depth**: z = L/2 [m] where L is wavelength [m]
+- **Wave Refraction**: sin(α₁)/sin(α₂) = c₁/c₂ (Snell's Law)
+  - Where α is wave angle, c is wave celerity [m/s]
+- **Breaking Wave Height**: H_b = 0.78d [m] where d is water depth [m]
+- **Wave Energy Flux**: P = (ρg²/64π)H²T [W/m]
+  - Where H is wave height [m], T is wave period [s]
+
+### 4.2 Coastal Erosion
+- **Sea Cliff Erosion Rate**: dS/dt = K(E-E_c) [m/s]
+  - Where E is wave energy [J/m²], E_c is threshold energy
+- **Platform Downwearing**: dz/dt = k·τ-r [m/s]
+  - Where τ is shear stress [Pa], r is rock resistance [Pa]
+- **Headland Erosion Rate**: E_h = K·H·(sinα)^n [m/s]
+  - Where H is wave height [m], α is wave approach angle [rad]
+- **Coastal Notch Development**: D = A·t^n [m]
+  - Where A is constant related to rock type, t is time [s], n ≈ 0.5-1
+
+### 4.3 Sediment Transport and Deposition
+- **Longshore Sediment Transport**: Q_l = K·E_b·cosα·sinα [m³/s]
+  - Where E_b is breaker energy [J/m²], α is breaker angle [rad]
+- **Cross-shore Transport**: Q_c = K·(w_f/H)·(H²-H_eq²) [m³/s]
+  - Where w_f is fall velocity [m/s], H_eq is equilibrium wave height [m]
+- **Beach Slope**: tanβ ∝ d^(0.5)/H_b^(0.25)
+  - Where d is sediment diameter [m], H_b is breaker height [m]
+- **Barrier Island Migration Rate**: dX/dt = a·R - b·S [m/s]
+  - Where R is sea level rise rate [m/s], S is sediment supply [m³/m/s]
+
+### 4.4 Coastal Landforms
+- **Beach Cusp Spacing**: λ = (g·T²·tanβ)/2π [m]
+  - Where T is wave period [s], β is beach slope [rad]
+- **Spit Growth Rate**: dL/dt = Q_l/(h·w) [m/s]
+  - Where h is depth [m], w is width [m]
+- **Tombolo Formation**: Occurs when L/D < 0.5
+  - Where L is wavelength [m], D is distance from shore to obstacle [m]
+- **Tidal Inlet Equilibrium**: A ∝ P^n
+  - Where A is cross-sectional area [m²], P is tidal prism [m³]
+  - n ≈ 0.85-1.1
+
+## 5. Wind Erosion and Aeolian Landforms
+
+### 5.1 Wind Transport Mechanics
+- **Threshold Shear Velocity**: u*_t = A·√(ρ_s/ρ_a·g·d) [m/s]
+  - Where A ≈ 0.1 for d > 0.1mm, ρ_s is sediment density [kg/m³]
+  - ρ_a is air density [kg/m³], d is particle diameter [m]
+- **Saltation Flux**: q_s = c·(ρ_a/g)·u*³·(1-u*_t/u*)·(1+u*_t/u*) [kg/m/s]
+  - Where c is empirical constant (1-3), u* is shear velocity [m/s]
+- **Suspension Threshold**: w_f/u* < 0.8 for suspension
+  - Where w_f is particle settling velocity [m/s]
+- **Transport Limited Deflation Rate**: dz/dt = -∇·q_s/(ρ_s·(1-φ)) [m/s]
+  - Where φ is porosity [dimensionless]
+
+### 5.2 Abrasion and Deflation
+- **Abrasion Rate**: dz/dt = -k·q_s·u²·(1-cos²θ) [m/s]
+  - Where q_s is saltation flux [kg/m/s], u is wind velocity [m/s]
+  - θ is impact angle [rad]
+- **Ventifact Formation**: Maximum erosion at height h ≈ 10-15 cm
+- **Deflation Depression Depth Limit**: Controlled by water table or non-erodible layer
+- **Yardang Orientation**: Parallel to prevailing wind direction
+  - Length/width ratio typically 3:1 to 10:1
+
+### 5.3 Dune Formation and Migration
+- **Dune Formation Threshold**: Sand supply > 25-40% of surface coverage
+- **Dune Height Limit**: H_max = C·L^(2/3) [m]
+  - Where L is wavelength [m], C is constant related to sand supply
+- **Dune Migration Rate**: dX/dt = q_s/(H·(1-φ)) [m/s]
+  - Where H is dune height [m], φ is porosity [dimensionless]
+- **Dune Type Transitions**:
+  - Ripples → Barchan → Transverse → Linear → Star
+  - As function of directional variability and sand supply
+
+### 5.4 Loess Deposition
+- **Deposition Rate**: dz/dt = q_d/(ρ_s·(1-φ)) [m/s]
+  - Where q_d is dust deposition flux [kg/m²/s]
+- **Thickness Distribution**: h(x) = h_0·exp(-kx) [m]
+  - Where h_0 is thickness at source [m], x is distance from source [m]
+- **Particle Size Distribution**: d_50(x) = d_0·exp(-ax) [m]
+  - Where d_50 is median grain size [m]
+- **Transport Distance**: L_t = u·h/w_f [m]
+  - Where u is wind velocity [m/s], h is atmospheric boundary layer height [m]
+
+## 6. Canyon Formation Processes
+
+### 6.1 Fluvial Canyon Incision
+- **Stream Power Incision**: dz/dt = -K·A^m·S^n [m/s]
+  - Where A is drainage area [m²], S is channel slope [dimensionless]
+  - m ≈ 0.3-0.5, n ≈ 0.7-1.0
+- **Knickpoint Migration Rate**: dX/dt = K·A^m·S^n [m/s]
+  - Typically 0.001-1 m/yr depending on rock type
+- **Critical Height for Mass Wasting**: H_c = 4c/(γ·tan(45°+φ/2)) [m]
+  - Where c is cohesion [Pa], γ is unit weight [N/m³], φ is friction angle [rad]
+- **Width-to-Depth Ratio**: Decreases with incision rate, increases with rock mass strength
+
+### 6.2 Slot Canyon Formation
+- **Formation Condition**: High gradient, resistant rock, flash flooding
+- **Undercutting Rate**: du/dt = k·(τ - τ_c)^a [m/s]
+  - Where τ is boundary shear stress [Pa], τ_c is critical shear stress [Pa]
+- **Slot Widening Rate**: dw/dt = f(flow depth/width, rock strength)
+  - Typically 10⁻⁵-10⁻⁴ m/yr
+- **Depth-to-Width Ratio**: Typically 5:1 to 15:1
+
+### 6.3 Groundwater Sapping
+- **Sapping Erosion Rate**: dL/dt = k·q^a·(S_h)^b·(1/K_r)^c [m/s]
+  - Where q is groundwater flux [m²/s], S_h is hydraulic gradient
+  - K_r is rock resistance [Pa], a ≈ 1, b ≈ 0.5, c ≈ 1
+- **Amphitheater Headwall Retreat**: dL/dt = k·Q_gw/H [m/s]
+  - Where Q_gw is groundwater discharge [m³/s], H is headwall height [m]
+- **Valley Width-to-Depth Ratio**: Typically 0.1-0.5 for sapping valleys
+
+### 6.4 Chronology and Dating
+- **Canyon Incision Rates**: Typically 0.01-5 mm/yr
+  - Function of uplift rate, precipitation, and rock resistance
+- **Dating Methods**:
+  - Cosmogenic nuclide exposure dating for canyon walls
+  - OSL dating for terrace sediments
+  - U-series dating for speleothems in related cave systems
+- **Canyon Age Estimation**: Depth / Incision Rate [yr]
+  - First-order approximation assuming constant incision
+
+## 7. Earthquake Effects on Landforms
+
+### 7.1 Co-seismic Deformation
+- **Surface Displacement**: u_s = M_0/(μ·L²) [m]
+  - Where M_0 is seismic moment [N·m], μ is rigidity [Pa], L is fault length [m]
+- **Fault Scarp Height**: h = u·sin(δ) [m]
+  - Where u is slip [m], δ is fault dip angle [rad]
+- **Rupture Length**: log(L) = 0.5M - 1.9 [m]
+  - Where M is moment magnitude
+- **Displacement-Length Scaling**: D = α·L^β [m]
+  - Where α ≈ 10⁻⁵-10⁻⁴, β ≈ 1-1.5
+
+### 7.2 Earthquake-Triggered Mass Movements
+- **Newmark Displacement**: D_N = ∫∫(a(t) - a_c)dt² [m]
+  - Where a(t) is earthquake acceleration [m/s²], a_c is critical acceleration [m/s²]
+- **Critical Acceleration**: a_c = (FS - 1)·g·sinα [m/s²]
+  - Where FS is static factor of safety, α is slope angle [rad]
+- **Landslide Density**: N = k·I^a [landslides/km²]
+  - Where I is shaking intensity, a ≈ 1.5-3
+- **Maximum Landslide Distance**: L_max ≈ 1.25·M - 7 [km]
+  - Where M is moment magnitude
+
+### 7.3 Liquefaction Features
+- **Liquefaction Susceptibility**: Function of soil type, saturation, depth, and PGA
+  - Occurs when pore pressure exceeds confining pressure
+- **Sand Boil Dimensions**: Diameter typically 0.1-5 m
+- **Lateral Spreading Displacement**: D = k·M·(100-F)·d^0.5·S^c [m]
+  - Where F is % fines, d is depth to liquefied layer [m], S is free face slope
+- **Settlement**: S = h·Dr [m]
+  - Where h is liquefied layer thickness [m], Dr is relative density change [dimensionless]
+
+### 7.4 Tectonic Landforms
+- **Fault Scarp Degradation**: h(t) = h_0·erfc(x/2√(kt)) [m]
+  - Where h_0 is initial height [m], k is diffusivity [m²/s]
+- **Knickpoint Formation Rate**: Formation frequency = fault slip rate / characteristic offset
+- **Ridge-Top Splitting**: Width = 2·slip·cot(dip) [m]
+- **Tectonic Uplift Estimation**: U = S + E [m/s]
+  - Where S is rock uplift rate [m/s], E is erosion rate [m/s]
+
+## 8. Multi-Process Interactions and Landscape Evolution
+
+### 8.1 Tectonic-Erosion Coupling
+- **Exhumation Rate**: dz/dt = U - E [m/s]
+  - Where U is rock uplift rate [m/s], E is erosion rate [m/s]
+- **Isostatic Response**: w = (ρ_r/(ρ_m-ρ_r))·h_e [m]
+  - Where w is isostatic uplift [m], h_e is eroded thickness [m], 
+  - ρ_r is crustal density [kg/m³], ρ_m is mantle density [kg/m³]
+- **Tectonic Aneurysm Feedback**: Erosion rate ∝ Uplift rate^n where n > 1
+- **Critical Taper Theory**: α + β = (1-ρ_w/ρ)(λ + μ_b) + μ_i
+  - Where α is surface slope, β is décollement dip, 
+  - λ is pore pressure ratio, μ_b and μ_i are basal and internal friction
+
+### 8.2 Climate-Landscape Interactions
+- **Weathering-Erosion Balance**: P = f(E, T, P_r)
+  - Where P is production rate [m/s], E is erosion rate [m/s],
+  - T is temperature [K], P_r is precipitation [m/s]
+- **Transport Capacity-Limited Erosion**: E = min(D, T_c)
+  - Where D is detachment rate [m/s], T_c is transport capacity [m³/m/s]
+- **Drainage Density**: D_d = 1/(2c) [1/m]
+  - Where c is critical flow distance [m]
+- **Critical Power Index**: ω_c = A^a·S^b > threshold for channel formation
+  - a ≈ 0.3-0.5, b ≈ 0.7-1.0
+
+### 8.3 Landscape Response Timescales
+- **Hillslope Response Time**: t_h = L²/D [s]
+  - Where L is hillslope length [m], D is diffusivity [m²/s]
+- **Fluvial Response Time**: t_f = L/K·A^m·S^(n-1) [s]
+  - Where L is channel length [m]
+- **Isostatic Response Time**: t_i = 2πλ/(ρ_m·g) [s]
+  - Where λ is flexural parameter [m]
+- **Knickpoint Migration Time**: t_k = L_c/V_k [s]
+  - Where L_c is channel length [m], V_k is knickpoint velocity [m/s]
+
+### 8.4 Self-Organized Criticality in Landscapes
+- **Frequency-Magnitude Distributions**: N(>s) ∝ s^-β
+  - Where s is event size, β ≈ 1-2 for landslides, flooding, etc.
+- **Fractal Dimension of Drainage Networks**: D_f ≈ 1.8-2.0
+- **Hack's Law Exponent**: h ≈ 0.5-0.6 reflects fractal properties
+- **Power Spectral Density of Topography**: S(k) ∝ k^-β
+  - Where k is wavenumber [1/m], β ≈ 2-3
+
+## 9. Rock Weathering and Soil Formation
+
+### 9.1 Physical Weathering
+- **Frost Cracking Intensity**: I = ∫t_(-8°C to -3°C)·A(T,z)·dz [m·s]
+  - Where t is time spent in frost-cracking window [s],
+  - A is water availability function, z is depth [m]
+- **Thermal Stress**: σ_T = E·α·ΔT/(1-ν) [Pa]
+  - Where α is thermal expansion coefficient [1/K], 
+  - E is Young's modulus [Pa], ν is Poisson's ratio
+- **Salt Weathering Rate**: dV/dt = k·N·(C_sat/C_eq-1)^m [m³/s]
+  - Where N is number of crystallization cycles, 
+  - C_sat is saturation concentration, C_eq is equilibrium concentration
+
+### 9.2 Chemical Weathering
+- **Reaction Rate**: R = k·A·(1-Q/K_eq) [mol/m²/s]
+  - Where A is reactive surface area [m²], 
+  - Q is reaction quotient, K_eq is equilibrium constant
+- **Activation Energy Dependence**: k = A·exp(-E_a/RT) [various units]
+  - Where E_a is activation energy [J/mol]
+- **pH Dependence**: log(k) = log(k_0) + n·pH
+  - For many silicate minerals, n ≈ 0.3-0.5
+- **Weathering Advance Rate**: dx/dt = k·(q/d)^n [m/s]
+  - Where q is fluid flux [m/s], d is grain size [m]
+
+### 9.3 Soil Formation and Properties
+- **Soil Production Function**: P = P_0·exp(-h/h_0) [m/s]
+  - Where P_0 is maximum production rate [m/s], 
+  - h is soil thickness [m], h_0 is characteristic scale [m]
+- **Depth-Age Relationship**: h(t) = h_max·(1-exp(-t/τ)) [m]
+  - Where h_max is equilibrium depth [m], τ is characteristic time [s]
+- **Soil Hydraulic Conductivity**: K = K_sat·(θ/θ_sat)^β [m/s]
+  - Where K_sat is saturated conductivity [m/s], 
+  - θ is moisture content, θ_sat is saturated moisture content
+- **Soil Cohesion**: c = c_i + (σ-u_a)·tanφ' + (u_a-u_w)·tanφ^b [Pa]
+  - Where c_i is intercept cohesion [Pa], φ' is effective friction angle [rad],
+  - φ^b is angle related to matric suction contribution [rad],
+  - u_a is air pressure, u_w is water pressure [Pa]
+
+## 10. Numerical Implementation for Complex Multi-Process Systems
+
+### 10.1 Process Coupling Strategies
+- **Operator Splitting**: Applied to processes with different timescales
+  - Error order: O(Δt) for sequential splitting, O(Δt²) for Strang splitting
+- **Asynchronous Time Stepping**: Different Δt for each process
+  - Δt_process = min(stability_limit, process_timescale/10)
+- **Implicit-Explicit Methods**: Implicit for stiff processes, explicit for others
+  - E.g., IMEX Runge-Kutta methods
+- **Event-Based Coupling**: Special handling for discrete events (landslides, impacts)
+  - State update: x(t+) = f(x(t-), event)
+
+### 10.2 Adaptive Resolution Strategies
+- **Feature-Based Refinement**: Resolution adapts to feature importance
+  - Δx_local ∝ 1/√(|∇²z|) for terrain with variable feature density
+- **Multi-Resolution Process Handling**: 
+  - Process interactions handled at coarsest common resolution
+  - Process calculations at appropriate native resolution
+- **Dynamic Mesh Adaptation**: Mesh refinement based on error estimators
+  - Error density E = ||u-u_h||/Δx^p where p is method order
+- **Non-Uniform Time Stepping**:
+  - Local CFL condition: Δt_local = CFL·Δx_local/v_local
+
+### 10.3 Conservation Guarantees
+- **Discrete Conservation Laws**: Ensure mass, momentum, energy conservation
+  - Use conservative formulations: ∂u/∂t + ∇·F(u) = S(u)
+  - Monitor conservation errors: |∑m(t) - ∑m(0)| / ∑m(0) < ε
+- **Bounded Solutions**: Prevent unphysical overshoots/undershoots
+  - Total Variation Diminishing (TVD) schemes
+  - Flux limiters: minmod, superbee, van Leer
+- **Consistency at Interfaces**: Match fluxes at process boundaries
+  - F_in = F_out across component interfaces
+- **Long-Term Stability**: Methods appropriate for geological timescales
+  - Implicit methods for diffusive processes
+  - Symplectic methods for mechanical systems
+
+### 10.4 Handling Special Cases
+- **Discontinuities**: Special treatment for fault scarps, bedrock exposures
+  - Ghost fluid method, level set methods, or immersed boundary methods
+- **Thresholds and Bifurcations**: Track system state relative to critical thresholds
+  - Event detection algorithms for crossing critical thresholds
+- **Rare High-Magnitude Events**: Statistical handling of extreme events
+  - Incorporate via stochastic forcing terms or Monte Carlo approaches
+- **Multi-Phase Systems**: Special treatment for fluid-solid-gas interactions
+  - Volume of Fluid (VOF) or Level Set methods for interfaces
+
+This set of additional laws and formulations covers the major geological processes required for your project, including impact phenomena, volcanic processes, glacial landforms, coastal processes, wind erosion, canyon formation, earthquake effects, and their complex interactions. I've included specific equations, parameters, and rates that would be valuable for implementing realistic simulations of these processes in the Aeon/Forge system.​​​​​​​​​​​​​​​​
